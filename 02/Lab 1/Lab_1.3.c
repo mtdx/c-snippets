@@ -9,7 +9,7 @@ int main() {
     printf("n = ");
     scanf("%d", &n);
 
-    v = (int **) malloc(n * sizeof(int));
+    v = (int **) malloc(n * sizeof(int *));
     for (i = 0; i < n; i++) {
         v[i] = (int *) malloc((i + 1) * sizeof(int));
         for (j = 0; j < i + 1; j++) {
@@ -17,12 +17,25 @@ int main() {
         }
     }
 
+    printf(" ");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < i + 1; j++) {
+            printf("%d ", v[i][j]);
+        }
+        printf("\n ");
+    }
+
+    printf("\n");
     for (i = 0; i < n; i++) {
         for (j = 0; j < i + 1; j++) {
             printf("v[%d][%d] = %d \n", i, j, v[i][j]);
         }
     }
 
+
+    for (i = 0; i < n; i++) {
+        free(v[i]);
+    }
     free(v);
 
     return 0;
